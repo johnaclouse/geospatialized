@@ -7,7 +7,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_acs_geometry()
+#' }
 get_acs_geometry <- function(states_needed = "Oregon") {
 
   state_fips <- get_state_fips_codes(states_needed)

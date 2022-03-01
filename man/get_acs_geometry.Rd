@@ -17,5 +17,7 @@ state, county, census tract, and block group level.
 Title
 }
 \examples{
+\dontrun{
 get_acs_geometry()
+}
 }

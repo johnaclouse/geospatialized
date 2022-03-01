@@ -13,7 +13,9 @@
 #' @export
 #'
 #' @examples
-#' str(get_geoid(lon = GOTO_M1$lon, lat = GOTO_M1$lat))
+#' \dontrun{
+#' get_geoid(lon = GOTO_M1$lon, lat = GOTO_M1$lat)
+#' }
 
 get_geoid <- function(lon,
                       lat,

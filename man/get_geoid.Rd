@@ -25,5 +25,7 @@ charcter value of GEOID (FIPS code)
 get_geoid
 }
 \examples{
-str(get_geoid(lon = GOTO_M1$lon, lat = GOTO_M1$lat))
+\dontrun{
+get_geoid(lon = GOTO_M1$lon, lat = GOTO_M1$lat)
+}
 }

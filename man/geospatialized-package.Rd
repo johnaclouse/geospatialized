@@ -8,6 +8,14 @@
 \description{
 Geospatial analysis functions for R.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/johnaclouse/geospatialized}
+  \item Report bugs at \url{https://github.com/johnaclouse/geospatialized/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: John Clouse \email{john@clouse.io} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
 

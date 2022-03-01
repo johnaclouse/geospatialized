@@ -1,5 +1,18 @@
-
-plot_geographic_areas <- function(target_location = geospatialized::GOTO_M1,
+#' plot_geographic_areas
+#'
+#' Plot the state, county, census tract, and block group geographic areas containing the target_location.
+#'
+#' @param lon numeric longitude of target
+#' @param lat numeric latitude of target
+#' @param states_needed character vector containing states needed for geography geometeries
+#' @param acs_geometry a list of acs_geometries from \code{get_acs_geometry()}
+#'
+#' @return leaflet object
+#' @export
+#'
+#' @examples
+plot_geographic_areas <- function(lon = geospatialized::GOTO_M1$lon,
+                                  lat = geospatialized::GOTO_M1$lat,
                                   states_needed = "Oregon",
                                   acs_geometry = NULL) {
 
@@ -9,13 +22,13 @@ plot_geographic_areas <- function(target_location = geospatialized::GOTO_M1,
     acs_geometry <- get_acs_geometry(states_needed)
 
 
-  target_block_group <- get_geoid(target_location$lon, target_location$lat, acs_geometry$block_groups)
+  target_block_group <- get_geoid(lon, lat, acs_geometry$block_groups)
   target_census_tract <- stringr::str_sub(as.character(target_block_group), 1, 11)
   target_county <- stringr::str_sub(as.character(target_block_group), 1, 5)
   target_state <- stringr::str_sub(as.character(target_block_group), 1, 2)
 
   target_sf <-
-    sf::st_as_sf(target_location,
+    sf::st_as_sf(data.frame(lon,lat),
                  coords = c("lon", "lat"), crs = 4326, agr = "constant")
 
   leaflet::leaflet() %>%
@@ -53,7 +66,7 @@ plot_geographic_areas <- function(target_location = geospatialized::GOTO_M1,
                      weight = 2,
                      fillOpacity = 0,
                      color = "#000000",
-                     popup = paste(unlist(target_location), collapse = ", ")) %>%
-    leaflet::setView(target_location$lon, target_location$lat, zoom = 12)
+                     popup = paste(lon, lat, sep = ", ")) %>%
+    leaflet::setView(lon, lat, zoom = 12)
 }
 
