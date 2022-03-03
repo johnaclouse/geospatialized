@@ -12,6 +12,7 @@ RoxygenNote: 7.1.2
 Imports: 
     curios,
     dplyr,
+    glue,
     leaflet,
     magrittr,
     sf,

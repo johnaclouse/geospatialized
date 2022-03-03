@@ -5,16 +5,13 @@
 \title{plot_geographic_areas}
 \usage{
 plot_geographic_areas(
-  lon = geospatialized::GOTO_M1$lon,
-  lat = geospatialized::GOTO_M1$lat,
+  location = geospatialized::GOTO_M1,
   states_needed = "Oregon",
   acs_geometry = NULL
 )
 }
 \arguments{
-\item{lon}{numeric longitude of target}
-
-\item{lat}{numeric latitude of target}
+\item{location}{data frame with columns "lon" and "lat"}
 
 \item{states_needed}{character vector containing states needed for geography geometeries}
 

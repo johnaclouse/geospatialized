@@ -4,28 +4,33 @@
 \alias{get_geoid}
 \title{get_geoid}
 \usage{
-get_geoid(lon, lat, acs_geometry = get_acs_geometry()$block_groups)
+get_geoid(location, acs_geometry = get_acs_geometry()$block_groups)
 }
 \arguments{
-\item{lon}{numeric longitude of target location}
-
-\item{lat}{numeric latitude of target location}
+\item{location}{data frame with columns "lon" and "lat"}
 
 \item{acs_geometry}{list of acs geometries
 
 If the acs_geometry is at the block group level, the returned GEOID will be
 the block group of the target location. Likewise, if the acs_geometry is at
 the census tract level, the GEOID returned will be the census tract
-containing the target location.}
+containing the target location.
+
+When a location lies on the edge of multiple geographies, only the first
+detected geography will be returned. If multiple geographies are detected,
+the \code{multiple_intersections} flag is set to \code{TRUE}.}
 }
 \value{
-charcter value of GEOID (FIPS code)
+data frame containing input coordinates, GEOID for geographic region,
+geography name, multiple intersections flag, ACS total population, and
+matching geometry
 }
 \description{
 get_geoid
 }
 \examples{
 \dontrun{
-get_geoid(lon = GOTO_M1$lon, lat = GOTO_M1$lat)
+options(tigris_use_cache = TRUE)
+get_geoid(GOTO_M1)
 }
 }
